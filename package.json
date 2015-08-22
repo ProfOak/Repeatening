@@ -1,0 +1,13 @@
+{
+  "title": "Repeatening",
+  "name": "repeatening",
+  "version": "0.0.1",
+  "description": "Transform YouTube URLs into websites that repeat YouTube videos",
+  "main": "index.js",
+  "author": "ProfOak",
+  "engines": {
+    "firefox": ">=38.0a1",
+    "fennec": ">=38.0a1"
+  },
+  "license": "GPL V3"
+}
