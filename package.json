@@ -1,6 +1,6 @@
 {
   "title": "Repeatening",
-  "name": "repeatening",
+  "name": "Repeatening",
   "version": "0.0.1",
   "description": "Transform YouTube URLs into websites that repeat YouTube videos",
   "main": "index.js",
