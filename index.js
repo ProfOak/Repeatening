@@ -1,5 +1,6 @@
 var buttons = require('sdk/ui/button/action')
 var tabs = require('sdk/tabs')
+var prefs = require('sdk/simple-prefs')
 
 var button = buttons.ActionButton({
     id: "repeatening",
@@ -18,7 +19,6 @@ function changeUrl() {
 
     /*
      * TODO:
-     * Add option for automagically pinning repeating link
      * Strip all useless GET req info from url
      */
 
@@ -34,4 +34,11 @@ function changeUrl() {
     tabs.activeTab.attach({
         contentScript: 'window.location="' + new_url + '"'
     });
+
+    // Auto pin the tab
+    // false by default
+    if (prefs.prefs["autopin"] == true) {
+        tabs.activeTab.pin();
+    }
+
 }
