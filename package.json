@@ -17,5 +17,22 @@
     "description": "Turn the repeating video into a pinned tab",
     "type": "bool",
     "value":"false"
+  },
+  {
+    "name": "website",
+    "title": "Repeating website",
+    "description": "Choose your repeating website",
+    "type": "radio",
+    "value": "listenonrepeat.com",
+    "options": [
+      {
+        "value": "listenonrepeat.com",
+        "label": "Listen on Repeat"
+      },
+      {
+        "value": "youtuberepeater.com",
+        "label": "YouTube Repeater"
+      }
+    ]
   }]
 }

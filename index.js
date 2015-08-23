@@ -15,6 +15,8 @@ var button = buttons.ActionButton({
 
 function changeUrl() {
     var current_url = tabs.activeTab.url;
+    // listenonrepeat or youtuberepeater
+    var repeating_website = prefs.prefs["website"];
     var new_url;
 
     /*
@@ -22,9 +24,10 @@ function changeUrl() {
      * Strip all useless GET req info from url
      */
 
+    console.log(repeating_website);
     // Make sure it's a valid YouTube video
     if (current_url.indexOf("watch?v") > -1) {
-        new_url = current_url.replace("youtube.com", "listenonrepeat.com");
+        new_url = current_url.replace("youtube.com", repeating_website);
     } else {
         console.log("Not vaid youtube url" + current_url);
         return;
