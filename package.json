@@ -1,7 +1,7 @@
 {
   "title": "Repeatening",
   "name": "Repeatening",
-  "version": "0.0.1",
+  "version": "0.2",
   "description": "Transform YouTube URLs into websites that repeat YouTube videos",
   "main": "index.js",
   "author": "ProfOak",
@@ -15,8 +15,10 @@
     "name": "autopin",
     "title": "Auto-Pin",
     "description": "Turn the repeating video into a pinned tab",
-    "type": "bool",
-    "value":"false"
+    "type": "boolint",
+    "on": "1",
+    "off": "0",
+    "value": 0
   },
   {
     "name": "website",
