@@ -13,12 +13,30 @@ var button = buttons.ActionButton({
     onClick: changeUrl
 })
 
+function isIn(str, keywords) {
+
+    for (i = 0; i < keywords.length; i++) {
+        if (str.indexOf(keywords[i]) <= -1) {
+            return false;
+        }
+    }
+    return true;
+}
+
+function changeWebsite(url) {
+    // This opens in current window, instead of a new tab
+    tabs.activeTab.attach({
+        contentScript: 'window.location="' + url + '"'
+    });
+}
+
 function changeUrl() {
     var current_url = tabs.activeTab.url;
 
     // listenonrepeat or youtuberepeater
     var repeating_website = prefs.prefs["website"];
     var new_url;
+    var youtube_strs = ["watch?v=", "youtube.com"];
 
     /*
      * TODO:
@@ -26,17 +44,16 @@ function changeUrl() {
      */
 
     // Make sure it's a valid YouTube video
-    if (current_url.indexOf("watch?v") > -1) {
+    if (isIn(current_url, youtube_strs)) {
         new_url = current_url.replace("youtube.com", repeating_website);
     } else {
+        // not a valid youtube video, just go to repeating site
+        changeWebsite("https://" + repeating_website);
         console.log("Not vaid youtube url" + current_url);
         return;
     }
 
-    // This opens in current window, instead of a new tab
-    tabs.activeTab.attach({
-        contentScript: 'window.location="' + new_url + '"'
-    });
+    changeWebsite(new_url);
 
     // Auto pin the tab
     // For some crazy reason simple-prefs type bool does not work
