@@ -49,7 +49,7 @@ function changeUrl() {
     } else {
         // not a valid youtube video, just go to repeating site
         changeWebsite("https://" + repeating_website);
-        console.log("Not vaid youtube url" + current_url);
+        console.log("Not vaid youtube url " + current_url);
         return;
     }
 
