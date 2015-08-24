@@ -1,9 +1,9 @@
 #Repeatening
 Transform YouTube URLs into websites that repeat YouTube videos
 
-Download link: [Download Page](https://github.com/ProfOak/Repeatening/releases/tag/0.0.1)
+Mozilla Addon page: [Link](https://addons.mozilla.org/en-US/firefox/addon/repeatening)
 
-Install link: [Download](https://github.com/ProfOak/Repeatening/releases/download/0.0.1/repeatening-0.0.1.xpi)
+Downloads: [Download Page](https://github.com/ProfOak/Repeatening/releases/)
 
 ### Build instructions
 
