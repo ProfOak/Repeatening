@@ -36,7 +36,7 @@ function changeUrl() {
     // listenonrepeat or youtuberepeater
     var repeating_website = prefs.prefs["website"];
     var new_url;
-    var youtube_strs = ["watch?v=", "youtube.com"];
+    var youtube_strs = ["youtube.com", "watch?", "v="];
 
     /*
      * TODO:
