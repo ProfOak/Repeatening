@@ -30,12 +30,6 @@ function changeUrl() {
     var new_url;
     var new_id;
     
-
-    /*
-     * TODO:
-     * Strip all useless GET req info from url
-     */
-
     // Make sure it's a valid YouTube video
     if (valid_yt_video.exec(current_url) != null) {
         // extract the ID from the YouTube video
