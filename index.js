@@ -1,6 +1,7 @@
 var buttons = require('sdk/ui/button/action')
 var tabs = require('sdk/tabs')
 var prefs = require('sdk/simple-prefs')
+var regex = require('sdk/util/match-pattern')
 
 var button = buttons.ActionButton({
     id: "repeatening",
@@ -13,16 +14,6 @@ var button = buttons.ActionButton({
     onClick: changeUrl
 })
 
-function isIn(str, keywords) {
-
-    for (i = 0; i < keywords.length; i++) {
-        if (str.indexOf(keywords[i]) <= -1) {
-            return false;
-        }
-    }
-    return true;
-}
-
 function changeWebsite(url) {
     // This opens in current window, instead of a new tab
     tabs.activeTab.attach({
@@ -31,12 +22,13 @@ function changeWebsite(url) {
 }
 
 function changeUrl() {
-    var current_url = tabs.activeTab.url;
-
     // listenonrepeat or youtuberepeater
     var repeating_website = prefs.prefs["website"];
+    var valid_yt_video = /.*youtube.com\/.*v=.*/g
+
+    var current_url = tabs.activeTab.url;
     var new_url;
-    var youtube_strs = ["youtube.com", "watch?", "v="];
+    
 
     /*
      * TODO:
@@ -44,12 +36,11 @@ function changeUrl() {
      */
 
     // Make sure it's a valid YouTube video
-    if (isIn(current_url, youtube_strs)) {
+    if (valid_yt_video.exec(current_url) != null) {
         new_url = current_url.replace("youtube.com", repeating_website);
     } else {
         // not a valid youtube video, just go to repeating site
         changeWebsite("https://" + repeating_website);
-        console.log("Not vaid youtube url " + current_url);
         return;
     }
 
