@@ -1,7 +1,6 @@
 var buttons = require('sdk/ui/button/action')
 var tabs = require('sdk/tabs')
 var prefs = require('sdk/simple-prefs')
-var regex = require('sdk/util/match-pattern')
 
 var button = buttons.ActionButton({
     id: "repeatening",
@@ -24,10 +23,12 @@ function changeWebsite(url) {
 function changeUrl() {
     // listenonrepeat or youtuberepeater
     var repeating_website = prefs.prefs["website"];
-    var valid_yt_video = /.*youtube.com\/.*v=.*/g
+    var valid_yt_video    = /.*youtube.com\/.*v=.*/g;
+    var valid_yt_id       = /v=([^\&\?\/]+)/;
 
     var current_url = tabs.activeTab.url;
     var new_url;
+    var new_id;
     
 
     /*
@@ -37,7 +38,10 @@ function changeUrl() {
 
     // Make sure it's a valid YouTube video
     if (valid_yt_video.exec(current_url) != null) {
-        new_url = current_url.replace("youtube.com", repeating_website);
+        // extract the ID from the YouTube video
+        new_id = valid_yt_id.exec(current_url)[0];
+        // and there we go, regex magic
+        new_url = "https://www." + repeating_website + "/watch?" + new_id;
     } else {
         // not a valid youtube video, just go to repeating site
         changeWebsite("https://" + repeating_website);
